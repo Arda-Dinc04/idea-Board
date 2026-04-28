@@ -2,7 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
-import { CATEGORY_OPTIONS } from "@/lib/constants";
+import { CATEGORY_OPTIONS, MAX_IDEA_LENGTH, MIN_IDEA_LENGTH } from "@/lib/constants";
 import { requireAdminClient } from "@/lib/admin";
 import { getActiveBoard, ensureCurrentWeekBoard } from "@/lib/boards";
 import { cleanDisplayName, normalizeName } from "@/lib/normalize";
@@ -71,12 +71,12 @@ function validateIdeaInput(input: IdeaInput):
   const displayName = cleanDisplayName(input.displayName);
   const category = input.category?.trim();
 
-  if (ideaText.length < 100) {
-    return { ok: false, error: "Ideas need at least 100 characters." };
+  if (ideaText.length < MIN_IDEA_LENGTH) {
+    return { ok: false, error: `Ideas need at least ${MIN_IDEA_LENGTH} characters.` };
   }
 
-  if (ideaText.length > 1000) {
-    return { ok: false, error: "Keep ideas to 1000 characters or less." };
+  if (ideaText.length > MAX_IDEA_LENGTH) {
+    return { ok: false, error: `Keep ideas to ${MAX_IDEA_LENGTH} characters or less.` };
   }
 
   if (category && !CATEGORY_OPTIONS.includes(category as (typeof CATEGORY_OPTIONS)[number])) {

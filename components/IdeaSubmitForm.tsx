@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { Send } from "lucide-react";
 import { toast } from "sonner";
 import { adminAddIdea, submitIdea } from "@/lib/actions";
-import { CATEGORY_OPTIONS, DEFAULT_BUILDERS } from "@/lib/constants";
+import { CATEGORY_OPTIONS, DEFAULT_BUILDERS, MAX_IDEA_LENGTH, MIN_IDEA_LENGTH } from "@/lib/constants";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -29,9 +29,9 @@ export function IdeaSubmitForm({ mode = "public", onSubmitted }: IdeaSubmitFormP
   const [category, setCategory] = useState<string>("Startup");
   const [isPending, startTransition] = useTransition();
 
-  const charsRemaining = 1000 - ideaText.length;
+  const charsRemaining = MAX_IDEA_LENGTH - ideaText.length;
   const canSubmit = useMemo(
-    () => ideaText.trim().length >= 100 && ideaText.length <= 1000,
+    () => ideaText.trim().length >= MIN_IDEA_LENGTH && ideaText.length <= MAX_IDEA_LENGTH,
     [ideaText],
   );
 
@@ -39,7 +39,9 @@ export function IdeaSubmitForm({ mode = "public", onSubmitted }: IdeaSubmitFormP
     event.preventDefault();
 
     if (!canSubmit) {
-      toast.error("Ideas need 100 to 1000 characters.");
+      toast.error(
+        `Ideas need ${MIN_IDEA_LENGTH} to ${MAX_IDEA_LENGTH} characters.`,
+      );
       return;
     }
 
@@ -73,13 +75,13 @@ export function IdeaSubmitForm({ mode = "public", onSubmitted }: IdeaSubmitFormP
           onChange={(event) => setIdeaText(event.target.value)}
           placeholder="Drop the weird thing you keep thinking about — we’ll try to make it real."
           className="min-h-36 resize-none rounded-lg border-border bg-card text-base leading-7 shadow-sm md:text-sm"
-          maxLength={1000}
+          maxLength={MAX_IDEA_LENGTH}
           required
         />
         <div className="flex items-center justify-between text-xs text-muted-foreground">
           <span>
-            Try to include: what it does, who uses it, and the weird/fun/useful hook. Min 100
-            chars.
+            Try to include: what it does, who uses it, and the weird/fun/useful hook. Min{" "}
+            {MIN_IDEA_LENGTH} chars.
           </span>
           <span className={charsRemaining < 0 ? "text-destructive" : ""}>{charsRemaining}</span>
         </div>
