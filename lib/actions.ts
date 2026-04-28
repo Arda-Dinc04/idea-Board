@@ -475,6 +475,23 @@ export async function archiveIdea(ideaId: string) {
   }
 }
 
+/** Permanently removes the idea row (stars, assignments, completions cascade). Admin only. */
+export async function deleteIdea(ideaId: string) {
+  try {
+    const { supabase } = await requireAdminClient();
+    const { error } = await supabase.from("ideas").delete().eq("id", ideaId);
+
+    if (error) {
+      return fail(error.message);
+    }
+
+    revalidatePath("/admin", "layout");
+    return ok();
+  } catch (error) {
+    return fail(error instanceof Error ? error.message : "Unable to delete idea.");
+  }
+}
+
 export async function createNewWeekBoard() {
   try {
     await requireAdminClient();
