@@ -35,11 +35,11 @@ const supabase = createClient(url, serviceRoleKey, {
   auth: { persistSession: false, autoRefreshToken: false },
 });
 
-const builders = ["Arda", "David", "Timur", "Texas"];
+const builders = ["AD", "YanLeCunn", "Tim", "Texas", "Miami"];
 const admins = [
-  ["ardadinc04@gmail.com", "Arda", "arda"],
-  ["luanthony523@gmail.com", "David", "david"],
-  ["yanzewu88@gmail.com", "Timur", "timur"],
+  ["ardadinc04@gmail.com", "AD", "ad"],
+  ["luanthony523@gmail.com", "YanLeCunn", "yanlecunn"],
+  ["yanzewu88@gmail.com", "Tim", "tim"],
 ];
 
 function normalizeName(name) {
@@ -302,7 +302,7 @@ const ideas = [
     category: "Startup",
     created_at: "2026-04-28T13:00:00Z",
     stars: 2,
-    builders: ["Arda", "David"],
+    builders: ["AD", "YanLeCunn"],
     idea_text:
       "A lunch radar for campus that pulls specials, wait times, and friend check-ins into one map. Students use it when they have twenty minutes and want the best food option without opening five separate apps.",
   },
@@ -313,7 +313,7 @@ const ideas = [
     category: "Website",
     created_at: "2026-04-28T16:20:00Z",
     stars: 3,
-    builders: ["Timur"],
+    builders: ["Tim"],
     completion: {
       deployment_url: "https://example.com/receipt-roast",
       github_url: "https://github.com/example/receipt-roast",
@@ -352,7 +352,7 @@ const ideas = [
     category: "Website",
     created_at: "2026-04-24T19:45:00Z",
     stars: 3,
-    builders: ["Arda", "Timur"],
+    builders: ["AD", "Tim"],
     completion: {
       deployment_url: "https://example.com/weekend-name-lab",
       github_url: "https://github.com/example/weekend-name-lab",

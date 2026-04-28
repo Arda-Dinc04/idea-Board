@@ -51,7 +51,7 @@ export function AdminLoginForm() {
         <SelectContent>
           {PRESET_ADMIN_ACCOUNTS.map((admin) => (
             <SelectItem key={admin.email} value={admin.email}>
-              {admin.label} - {admin.email}
+              {admin.label}
             </SelectItem>
           ))}
           <SelectItem value="custom">Other admin email</SelectItem>
