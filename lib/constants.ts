@@ -15,7 +15,7 @@ export const IDEA_STATUSES = [
   "archived",
 ] as const;
 
-export const DEFAULT_BUILDERS = ["AD", "YanLeCunn", "Tim", "Texas", "Miami"] as const;
+export const DEFAULT_BUILDERS = ["AD", "YanLeCunn", "Texas", "Miami"] as const;
 
 export type IdeaCategory = (typeof CATEGORY_OPTIONS)[number];
 export type IdeaStatus = (typeof IDEA_STATUSES)[number];

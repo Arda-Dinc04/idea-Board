@@ -9,7 +9,7 @@ export const PRESET_ADMIN_ACCOUNTS = [
     email: "luanthony523@gmail.com",
   },
   {
-    label: "Tim",
+    label: "Texas",
     email: "yanzewu88@gmail.com",
   },
 ] as const;

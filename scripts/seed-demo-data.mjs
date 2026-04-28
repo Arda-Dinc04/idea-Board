@@ -35,11 +35,11 @@ const supabase = createClient(url, serviceRoleKey, {
   auth: { persistSession: false, autoRefreshToken: false },
 });
 
-const builders = ["AD", "YanLeCunn", "Tim", "Texas", "Miami"];
+const builders = ["AD", "YanLeCunn", "Texas", "Miami"];
 const admins = [
   ["ardadinc04@gmail.com", "AD", "ad"],
   ["luanthony523@gmail.com", "YanLeCunn", "yanlecunn"],
-  ["yanzewu88@gmail.com", "Tim", "tim"],
+  ["yanzewu88@gmail.com", "Texas", "texas"],
 ];
 
 function normalizeName(name) {
@@ -313,7 +313,7 @@ const ideas = [
     category: "Website",
     created_at: "2026-04-28T16:20:00Z",
     stars: 3,
-    builders: ["Tim"],
+    builders: ["Texas"],
     completion: {
       deployment_url: "https://example.com/receipt-roast",
       github_url: "https://github.com/example/receipt-roast",
@@ -352,7 +352,7 @@ const ideas = [
     category: "Website",
     created_at: "2026-04-24T19:45:00Z",
     stars: 3,
-    builders: ["AD", "Tim"],
+    builders: ["AD", "Texas"],
     completion: {
       deployment_url: "https://example.com/weekend-name-lab",
       github_url: "https://github.com/example/weekend-name-lab",
